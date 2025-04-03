@@ -1,47 +1,24 @@
+import html from "../../services/DOMConstructor.js";
+
 import Renderer from "../core/Renderer.js";
 import InputHandler from "../core/InputHandler.js";
-import Sidebar from "./SideBar.js";
-import PropertiesPanel from "./PropertiesPanel.js";
-import HierarchyPanel from "./HierarchyPanel.js";
+import ToolBar from "./ToolBar.js";
+class ViewPort {
+  constructor(app) {
+    this.app = app;
+    this.container = new html("div").cls("viewport");
+    this.left = new html("div").cls("left-container");
+    this.center = new html("div").cls("center-container");
+    this.right = new html("div").cls("right-container");
 
-import Controls from "./Controls.js";
-class Viewport {
-  constructor(container) {
-    this.container = container;
-
-    //container to hold canvas and tools
-    this.leftContainer = document.createElement("div");
-    this.leftContainer.classList.add("left-container");
-
-    this.centerContainer = document.createElement("div");
-    this.centerContainer.classList.add("center-container");
-
-    this.rightContainer = document.createElement("div");
-    this.rightContainer.classList.add("right-container");
-
-    this.toolsContainer = document.createElement("div");
-    this.toolsContainer.classList.add("tools-container");
-
-    this.container.appendChild(this.leftContainer);
-    this.container.appendChild(this.centerContainer);
-    this.container.appendChild(this.rightContainer);
-    this.centerContainer.appendChild(this.toolsContainer);
-
-    this.canvas = document.createElement("canvas");
-    this.canvas.style.width = "100%";
-    this.canvas.style.height = "100%";
-
-    this.hierarchyPanel = new HierarchyPanel();
-    this.hierarchyPanel.appendTo(this.leftContainer);
-
-    this.sidebar = new Sidebar();
-    this.controls = Controls();
-    this.propertiesPanel = new PropertiesPanel();
-
-    this.sidebar.appendTo(this.toolsContainer);
-    this.toolsContainer.appendChild(this.controls);
-    this.centerContainer.appendChild(this.canvas);
-    this.propertiesPanel.appendTo(this.rightContainer);
+    this.canvas = new html("canvas").build();
+    this.center.chld([ToolBar(), this.canvas]);
+    this.container.chld([
+      this.left.build(),
+      this.center.build(),
+      this.right.build(),
+    ]);
+    this.app.appendChild(this.container.build());
 
     this.renderer = new Renderer(this.canvas);
     this.camera = this.renderer.camera;
@@ -50,7 +27,6 @@ class Viewport {
       this.camera,
       this.renderer.scene
     );
-
     this.loop();
   }
 
@@ -60,4 +36,4 @@ class Viewport {
   }
 }
 
-export default Viewport;
+export default ViewPort;
