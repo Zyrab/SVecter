@@ -47,23 +47,13 @@ class Camera {
     this.isDragging = false;
   }
 
-  zoomAt(mouseX, mouseY, delta) {
+  zoomAt(wx, wy, sx, sy, delta) {
     let zoomFactor = delta > 0 ? 0.9 : 1.1;
-    let newZoom = this.zoom * zoomFactor;
+    this.zoom *= zoomFactor;
+    this.zoom = Math.max(0.2, Math.min(3, this.zoom));
 
-    // Keep zoom within reasonable bounds
-    newZoom = Math.max(0.2, Math.min(3, newZoom));
-
-    // Calculate the world coordinates of the mouse before zooming
-    let worldMouseX = (mouseX - this.x) / this.zoom;
-    let worldMouseY = (mouseY - this.y) / this.zoom;
-
-    // Apply zoom
-    this.zoom = newZoom;
-
-    // Recalculate camera position to keep the mouse point stable
-    this.x = mouseX - worldMouseX * this.zoom;
-    this.y = mouseY - worldMouseY * this.zoom;
+    this.x = sx - wx * this.zoom;
+    this.y = sy - wy * this.zoom;
   }
 }
 
