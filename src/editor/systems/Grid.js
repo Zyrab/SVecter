@@ -13,8 +13,8 @@ class Grid {
     ctx.lineWidth = 0.5;
 
     const scaledStep = this.step * camera.zoom;
-    const startX = -((camera.x % scaledStep) + scaledStep);
-    const startY = -((camera.y % scaledStep) + scaledStep);
+    const startX = (camera.x % scaledStep) + scaledStep;
+    const startY = (camera.y % scaledStep) + scaledStep;
 
     for (let x = startX; x < canvas.width; x += scaledStep) {
       ctx.beginPath();
