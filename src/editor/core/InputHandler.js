@@ -14,15 +14,18 @@ class InputHandler {
     this.canvas.addEventListener("mousedown", (e) => this.onMouseDown(e));
     this.canvas.addEventListener("mousemove", (e) => this.onMouseMove(e));
     this.canvas.addEventListener("mouseup", () => this.onMouseUp());
+    this.canvas.addEventListener("contextmenu", (e) => e.preventDefault());
     this.canvas.addEventListener("wheel", (e) => this.onWheel(e));
     this.canvas.addEventListener("click", (e) => this.onClick(e));
   }
 
   getMousePosition(e) {
     const rect = this.canvas.getBoundingClientRect();
-    const x = (e.clientX - rect.left - this.camera.x) / this.camera.zoom;
-    const y = (e.clientY - rect.top - this.camera.y) / this.camera.zoom;
-    return { x, y };
+    const sx = e.clientX - rect.left;
+    const sy = e.clientY - rect.top;
+    const x = (sx - this.camera.x) / this.camera.zoom;
+    const y = (sy - this.camera.y) / this.camera.zoom;
+    return { x, y, sx, sy };
   }
 
   onMouseDown(e) {
@@ -52,7 +55,9 @@ class InputHandler {
   }
 
   onWheel(e) {
-    this.camera.zoomAt(e.clientX, e.clientY, e.deltaY);
+    const { x, y, sx, sy } = this.getMousePosition(e);
+
+    this.camera.zoomAt(x, y, sx, sy, e.deltaY);
     e.preventDefault();
   }
 
