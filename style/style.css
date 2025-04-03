@@ -29,12 +29,18 @@ body {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:0 10vw;
+}
 h2{
   font: var(--h2);
   padding:0.4rem;
   margin: 0;
 }
-#editor-container {
+.viewport {
   display: flex;
   width: 100vw;
   height: 100vh;
@@ -58,7 +64,7 @@ h2{
   background-color: var(--color-pre-primary);
   border-left: 1px solid var(--color-hover);
 }
-.tools-container {
+.toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,7 +72,7 @@ h2{
   background-color: var(--color-pre-primary);
 }
 /* Toolbar */
-.toolbar, .sidebar {
+.toolbar-item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,7 +118,6 @@ h2{
   align-items: center;
   justify-content: center;
 }
-
 .tool-btn:hover {
   background-color: var(--color-hover);
   color: var(--color-secondary);
@@ -128,7 +133,8 @@ h2{
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out 500ms;
+  
 }
 
 .tool-btn:hover .tooltip {
