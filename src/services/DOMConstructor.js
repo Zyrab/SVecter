@@ -80,6 +80,10 @@ class html {
     });
     return this;
   }
+  clear() {
+    this.element.replaceChildren();
+    return this;
+  }
 
   build() {
     return this.element;
