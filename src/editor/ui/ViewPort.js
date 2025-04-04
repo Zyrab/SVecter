@@ -2,32 +2,55 @@ import html from "../../services/DOMConstructor.js";
 
 import Renderer from "../core/Renderer.js";
 import InputHandler from "../core/InputHandler.js";
+
 import ToolBar from "./ToolBar.js";
+import HierarchyPanel from "./HierarchyPanel.js";
+
 class ViewPort {
   constructor(app) {
     this.app = app;
+    this.gameObjects = [];
     this.container = new html("div").cls("viewport");
-    this.left = new html("div").cls("left-container");
-    this.center = new html("div").cls("center-container");
-    this.right = new html("div").cls("right-container");
 
+    // Left panel (Hierarchy)
+    this.hierarchyPanel = new html("div").cls("left-container");
+    this.updateHierarchyPanel(); // Initialize hierarchy panel
+
+    // Center panel (Canvas)
+    this.center = new html("div").cls("center-container");
     this.canvas = new html("canvas").build();
     this.center.chld([ToolBar(), this.canvas]);
+
+    // Right panel (Optional future UI elements)
+    this.right = new html("div").cls("right-container");
+
+    // Append UI elements
     this.container.chld([
-      this.left.build(),
+      this.hierarchyPanel.build(),
       this.center.build(),
       this.right.build(),
     ]);
     this.app.appendChild(this.container.build());
 
+    // Initialize Renderer & InputHandler
     this.renderer = new Renderer(this.canvas);
-    this.camera = this.renderer.camera;
     this.inputHandler = new InputHandler(
       this.canvas,
-      this.camera,
+      this.renderer.camera,
       this.renderer.scene
     );
+    this.renderer.scene.on("objectListUpdated", (newObjects) => {
+      this.gameObjects = newObjects;
+      this.updateHierarchyPanel();
+    });
+
+    // Update loop
     this.loop();
+  }
+
+  updateHierarchyPanel() {
+    // Clear and update hierarchy panel
+    this.hierarchyPanel.clear().chld([HierarchyPanel(this.gameObjects)]);
   }
 
   loop() {
