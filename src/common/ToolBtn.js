@@ -1,7 +1,6 @@
 import html from "../services/DOMConstructor.js";
 
 export default function ToolBtn(tool, icon, onClick) {
-  console.log("tool", onClick);
   const spam = new html("span")
     .cls("material-symbols-outlined")
     .css({ fontSize: "1rem" })
