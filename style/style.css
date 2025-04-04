@@ -49,7 +49,7 @@ h2{
   display: flex;
   flex-direction: column;
   width: 12vw;
-  background-color: var(--color-pre-primary);
+  background-color: var(--color-primary);
   border-right: 1px solid var(--color-hover);
 }
 .center-container {
@@ -61,7 +61,7 @@ h2{
   display: flex;
   flex-direction: column;
   width: 24vw;
-  background-color: var(--color-pre-primary);
+  background-color: var(--color-primary);
   border-left: 1px solid var(--color-hover);
 }
 .toolbar {
@@ -71,7 +71,6 @@ h2{
   padding: 0.2rem;
   background-color: var(--color-pre-primary);
 }
-/* Toolbar */
 .toolbar-item {
   display: flex;
   justify-content: center;
@@ -80,33 +79,50 @@ h2{
   gap: 0.2rem;
 }
 
-
-/* Properties Panel */
-.properties-panel,
 .hierarchy-panel {
- height: 100%;
- display: flex;
- flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
-
-
-.properties-panel label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.properties-panel input {
+.hierarchy-panel ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
   width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background-color: var(--color-pre-primary);
 }
 
-/* Hierarchy Panel */
-.hierarchy-panel {
-  overflow-y: auto;
-  grid-column: 1 / 2;
+.hierarchy-panel li {
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.2rem;
+  
 }
 
+.hierarchy-panel li:hover {
+  background-color: var(--color-hover);
+}
+
+
+.section-name {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  background-color: var(--color-pre-primary);
+}
+/* tool bootons */
 .tool-btn {
   position: relative;
   padding: 0.4rem;
