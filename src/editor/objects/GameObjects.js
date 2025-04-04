@@ -1,5 +1,6 @@
 class GameObject {
-  constructor(x, y, width, height, color = "blue") {
+  constructor(x, y, width, height, color = "blue", name = "GameObject") {
+    this.name = name;
     this.x = x;
     this.y = y;
     this.width = width;
