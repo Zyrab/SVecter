@@ -12,7 +12,7 @@ export default function ToolBar() {
 
   const items = tools.map((tool) => {
     return new html("div")
-      .cls("toolbar-item")
+      .cls("flex row just-center align-center gap-02")
       .chld(
         tool.map((item) => {
           return ToolBtn(item.name, item.icon);
@@ -22,7 +22,7 @@ export default function ToolBar() {
   });
 
   const container = new html("div")
-    .cls("toolbar")
+    .cls("flex just-between align-center p-02 bg-pre-primary")
     .chld(items)
     .on({ click: handleToolbarClick })
     .build();

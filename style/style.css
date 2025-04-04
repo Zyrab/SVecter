@@ -26,6 +26,7 @@ body {
   overflow: hidden;
   box-sizing: border-box;
   height: 100vh;
+  font-family: var(--ff);
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
@@ -64,20 +65,7 @@ h2{
   background-color: var(--color-primary);
   border-left: 1px solid var(--color-hover);
 }
-.toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem;
-  background-color: var(--color-pre-primary);
-}
-.toolbar-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.2rem;
-}
+
 
 .hierarchy-panel {
   height: 100%;
@@ -99,29 +87,24 @@ h2{
 }
 
 .hierarchy-panel li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.2rem;
   padding: 0.3rem 0.8rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 0.2rem;
-  
 }
-
+.hierarchy-panel li :nth-child(2) {
+  display: none;
+}
+.hierarchy-panel li:hover :nth-child(2) {
+  display: flex;
+}
 .hierarchy-panel li:hover {
-  background-color: var(--color-hover);
+  background-color: var(--color-primary);
 }
 
-
-.section-name {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 0.2rem;
-  padding: 0.2rem;
-  background-color: var(--color-pre-primary);
-}
 /* tool bootons */
 .tool-btn {
   position: relative;

@@ -1,15 +1,10 @@
 import html from "../services/DOMConstructor.js";
-
+import MSOIcon from "./MSOIcon.js";
 export default function ToolBtn(tool, icon, onClick) {
-  const spam = new html("span")
-    .cls("material-symbols-outlined")
-    .css({ fontSize: "1rem" })
-    .txt(icon)
-    .build();
   const tooltip = new html("span").cls("tooltip").txt(tool).build();
   const button = new html("button")
     .cls("tool-btn")
-    .chld([spam, tooltip])
+    .chld([MSOIcon(icon), tooltip])
     .on({ click: onClick })
     .build();
   return button;
