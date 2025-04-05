@@ -1,11 +1,10 @@
-import Selection from "../systems/Selection.js";
 import DragAndDrop from "../systems/DragAndDrop.js";
 
 class InputHandler {
-  constructor(canvas, camera, scene) {
+  constructor(canvas, camera, scene, selector) {
     this.canvas = canvas;
     this.camera = camera;
-    this.selection = new Selection(scene);
+    this.selection = selector;
     this.dragAndDrop = new DragAndDrop(scene, this.selection);
     this.initEventListeners();
   }
