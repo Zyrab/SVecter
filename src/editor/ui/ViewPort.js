@@ -2,6 +2,7 @@ import html from "../../services/DOMConstructor.js";
 
 import Renderer from "../core/Renderer.js";
 import InputHandler from "../core/InputHandler.js";
+import Selection from "../systems/Selection.js";
 
 import ToolBar from "./ToolBar.js";
 import HierarchyPanel from "./HierarchyPanel.js";
@@ -34,10 +35,14 @@ class ViewPort {
 
     // Initialize Renderer & InputHandler
     this.renderer = new Renderer(this.canvas);
+
+    this.selection = new Selection(this.renderer.scene);
+
     this.inputHandler = new InputHandler(
       this.canvas,
       this.renderer.camera,
-      this.renderer.scene
+      this.renderer.scene,
+      this.selection
     );
     this.renderer.scene.on("objectListUpdated", (newObjects) => {
       this.gameObjects = newObjects;
@@ -50,7 +55,9 @@ class ViewPort {
 
   updateHierarchyPanel() {
     // Clear and update hierarchy panel
-    this.hierarchyPanel.clear().chld([HierarchyPanel(this.gameObjects)]);
+    this.hierarchyPanel
+      .clear()
+      .chld([HierarchyPanel(this.gameObjects, this.selection)]);
   }
 
   loop() {

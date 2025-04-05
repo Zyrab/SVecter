@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add sample objects for testing
   viewPort.renderer.scene.addObject(
-    new GameObject(100, 100, 80, 80, "red", "test-red")
+    new GameObject(100, 100, 80, 80, "red", "Test red")
   );
   viewPort.renderer.scene.addObject(
-    new GameObject(300, 200, 100, 50, "green", "test-green")
+    new GameObject(300, 200, 100, 50, "green", "Artilery green")
   );
   viewPort.renderer.scene.addObject(
-    new GameObject(500, 400, 120, 120, "blue", "test-blue")
+    new GameObject(500, 400, 120, 120, "blue", "Water blue")
   );
   viewPort.renderer.scene.addObject(
-    new GameObject(500, 800, 200, 50, "purple", "test-purple")
+    new GameObject(500, 800, 200, 50, "purple", "Artifactory purple")
   );
 });
