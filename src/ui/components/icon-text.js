@@ -1,4 +1,4 @@
-import html from "../../services/DOMConstructor.js";
+import html from "../../services/dom-constructor.js";
 import createIcon from "./icon.js";
 export default function iconText(text, iconName) {
   const iconText = new html("div")

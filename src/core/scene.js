@@ -1,6 +1,4 @@
-import GameObject from "./GameObjects.js";
-
-class SceneManager {
+class Scene {
   constructor() {
     this.objects = [];
     this.eventListeners = {};
@@ -39,4 +37,4 @@ class SceneManager {
   }
 }
 
-export default SceneManager;
+export default Scene;

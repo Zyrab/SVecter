@@ -1,9 +1,9 @@
-import html from "../../services/DOMConstructor.js";
-export default function createIcon(iconName, fontSize = "1rem", id = "") {
+import html from "../../services/dom-constructor.js";
+export default function createIcon(iconName, action = "", fontSize = "1rem") {
   const icon = new html("span")
     .cls("material-symbols-outlined")
     .css({ fontSize })
-    .id(id)
+    .attr({ "data-action": action })
     .txt(iconName)
     .build();
   return icon;

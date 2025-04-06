@@ -1,4 +1,4 @@
-import html from "../../services/DOMConstructor.js";
+import html from "../../services/dom-constructor.js";
 import createIcon from "./icon.js";
 export default function creteIconButton(toolTipText, iconName, onClick) {
   const tooltip = new html("span").cls("tooltip").txt(toolTipText).build();
