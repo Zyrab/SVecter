@@ -84,6 +84,11 @@ class html {
     this.element.replaceChildren();
     return this;
   }
+  replace(child, newChild) {
+    child.replaceWith(newChild);
+    if (child === this.element) this.element = newChild;
+    return this;
+  }
 
   build() {
     return this.element;
