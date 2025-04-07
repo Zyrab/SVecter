@@ -1,4 +1,4 @@
-import html from "../../services/DOMConstructor.js";
+import html from "../../services/dom-constructor.js";
 import creteIconButton from "../components/icon-button.js";
 export default function Header() {
   const prefersDarkScheme = window.matchMedia(
