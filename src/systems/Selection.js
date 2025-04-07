@@ -1,4 +1,4 @@
-import EditorState from "../state/editor.js";
+import EditorState from "../state/editor-state.js";
 
 class Selection {
   constructor(scene) {
@@ -9,11 +9,17 @@ class Selection {
   selectObject(obj) {
     if (this.selectedObject === obj) return;
 
-    // Use EditorState's central selection handler
-    if (obj) {
-      EditorState.selectObject(obj);
-      this.selectedObject = obj;
+    // Clear previous selection
+    if (this.selectedObject) {
+      this.selectedObject.selected = false;
     }
+
+    if (obj) {
+      obj.selected = true;
+    }
+
+    this.selectedObject = obj;
+    EditorState.selectObject(obj); // This already emits event
   }
 
   handleClick(x, y) {
