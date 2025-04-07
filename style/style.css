@@ -19,12 +19,14 @@
   --color-tertiary: hsl(0, 80%, 60%);
   --color-hover: hsl(218, 40%, 60%);
 }
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
+}
+body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-sizing: border-box;
   height: 100vh;
   font-family: var(--ff);
   background-color: var(--color-primary);
@@ -41,6 +43,18 @@ h2{
   padding:0.4rem;
   margin: 0;
 }
+button{
+  border: none;
+  cursor: pointer;
+}
+.input{
+  border: var(--color-hover) 1px solid;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  font-family: var(--ff);
+  cursor: text;
+}
+
 .viewport {
   display: flex;
   width: 100vw;
