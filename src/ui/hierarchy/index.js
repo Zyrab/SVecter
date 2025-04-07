@@ -17,12 +17,15 @@ export default function createHierarchy() {
 
   const list = new html("ul");
 
-  const hierarchy = new html("div")
+  const hierarchy = new html()
     .cls("hierarchy-panel")
     .chld([
       createIconText("Hierarchy", "view_object_track"),
       list.build(),
-      createButton("Add new", "add"),
+      new html()
+        .cls("flex just-center p-05 w-full bg-pre-primary")
+        .chld([createButton("Add new", "add")])
+        .build(),
     ])
     .on({ click: handleClick })
     .build();

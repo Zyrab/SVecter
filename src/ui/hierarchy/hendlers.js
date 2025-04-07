@@ -22,7 +22,7 @@ export function handleClick(e) {
         );
         break;
       default:
-        EditorState.selectObject(obj);
+        EditorState.selection.selectObject(obj);
         break;
     }
   }
