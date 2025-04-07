@@ -3,7 +3,7 @@ import createToolbar from "./tool-bar.js";
 import createHierarchy from "../hierarchy/index.js";
 import createProperties from "../properties/index.js";
 import Render from "../../core/render.js";
-import GameObject from "../../core/GameObjects.js";
+import GameObject from "../../core/game-object.js";
 export default function createViewPort(app) {
   const container = new html().cls("viewport");
   const left = new html().cls("left-container");

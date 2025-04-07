@@ -1,5 +1,5 @@
 import EditorState from "../../state/editor-state.js";
-import GameObject from "../../core/GameObjects.js";
+import GameObject from "../../core/game-object.js";
 let prevSelectedId = null;
 export function handleClick(e) {
   const li = e.target.closest("li");
